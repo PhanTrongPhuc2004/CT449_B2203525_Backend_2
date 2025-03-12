@@ -12,7 +12,7 @@ exports.create = async (req, res, next) => {
         const document = await contactService.create(req.body);
         return res.send(document);
     } catch (error) {
-        next(new ApiError(500, "An error occurred creating the contact"));
+        return next(new ApiError(500, "An error occurred creating the contact"));
     }
 };
 
@@ -49,7 +49,7 @@ exports.findOne = async (req, res, next) => {
 
 // Update a contact with the specified id in the request
 exports.update = async (req, res, next) => {
-    if (Object.keys(req.body) === 0) {
+    if (Object.keys(req.body).length === 0) {
         return next(new ApiError(400, "Data update cannot be empty"));
     }
     try {

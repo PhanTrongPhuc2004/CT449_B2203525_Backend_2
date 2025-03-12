@@ -25,8 +25,8 @@ class ContactService {
             {$set: {favorite: contact.favorite === true}},
             {returnsDocument: "after", upsert: true}
         );
-        console.log(result);
         return result;
+        // console.log(result);
     }
 
     // Method to find contacts by filter
@@ -49,7 +49,7 @@ class ContactService {
     }
 
     // method to update contact by id
-    async updateById(id, payload) {
+    async update(id, payload) {
         const filter = {
             _id: ObjectId.isValid(id) ? new ObjectId(id) : null,
         };
@@ -57,6 +57,7 @@ class ContactService {
         const result = await this.Contact.findOneAndUpdate(filter, 
             {$set: update}, 
             {returnDocument: "after"});
+        return result;
     }
 
     // method to delete contact by id

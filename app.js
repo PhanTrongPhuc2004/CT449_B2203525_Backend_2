@@ -10,7 +10,8 @@ app.use(express.json());
 
 // Default route
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to contact book application." });
+    // res.json({ message: "Welcome to contact book application backend." });
+    res.send("Welcome to contact book application backend.");
 });
 
 // route example for error handling
